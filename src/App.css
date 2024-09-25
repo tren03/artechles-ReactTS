@@ -1,16 +1,15 @@
 /* App.css */
 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     width: 100%;
 }
 
 .app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
 }
-
-
