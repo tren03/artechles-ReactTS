@@ -1,4 +1,6 @@
+import "./css/categoryScrollSubItem.css"
 type TitleProps = {
+    
     title: string | null;
 }; 
 
@@ -7,7 +9,7 @@ function CategoryScrollSubItem({ title }: TitleProps) {
         console.log("clicked")
     }
 
-    return <div onClick={handleOnClickCategory}> {title} </div>;
+    return <button className="CategoryScrollSubItem" onClick={handleOnClickCategory}> {title} </button >;
 }
 
 export default CategoryScrollSubItem;

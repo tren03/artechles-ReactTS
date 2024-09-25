@@ -2,3 +2,13 @@
     width: 100%;
 }
 
+
+.categoryItemContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropDownContainer{
+    display: flex;
+    flex-direction: column;
+}

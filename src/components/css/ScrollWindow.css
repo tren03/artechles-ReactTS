@@ -1,6 +1,5 @@
 .scrollable-sidebar {
     height: 100%;
-    width: 15%;
     /* Set the width for the sidebar */
     overflow-y: auto;
     /* Make the sidebar scrollable */

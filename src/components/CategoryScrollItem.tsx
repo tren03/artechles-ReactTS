@@ -2,9 +2,11 @@ import { useState } from 'react';
 import './css/categoryScrollItem.css';
 import CategoryScrollSubItem from './CategoryScrollSubItem';
 type Post = {
-    id: number;
-    title: string;
-    content: string;
+    ID: number;
+    Title: string;
+    Url: string;
+    Body: string;
+    Date: string;
 };
 
 type CategoryItem = {
@@ -24,12 +26,12 @@ function CategoryScrollItem({
 
     if (isDropDown) {
         SubItems = (
-            <div>
+            <div className='dropDownContainer'>
                 {posts.map((post) => {
                     return (
                         <CategoryScrollSubItem
-                            key={post.id}
-                            title={post.title}
+                            key={post.ID}
+                            title={post.Title}
                         />
                     );
                 })}
@@ -42,7 +44,7 @@ function CategoryScrollItem({
     }
 
     return (
-        <div>
+        <div className='categoryItemContainer'>
             <button
                 className="CategoryItem"
                 onClick={handleOnClickCategory}

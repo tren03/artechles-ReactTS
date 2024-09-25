@@ -1,7 +1,24 @@
 import './css/ScrollWindow.css'; // Import the CSS for the scrollable component
 import CategoryScrollItem from './CategoryScrollItem';
+import sample_api_data from '../assets/sample_api_data';
+type ApiData = {
+    ID: number;
+    Title: string;
+    Url: string;
+    Body: string;
+    Date: string;
+    Category: string;
+};
 
+type Post = {
+    ID: number;
+    Title: string;
+    Url: string;
+    Body: string;
+    Date: string;
+};
 const ScrollWindow = () => {
+    // required data format
     const sample_data = {
         categories: [
             {
@@ -76,13 +93,51 @@ const ScrollWindow = () => {
             },
         ],
     };
+    const transformData = (data: ApiData[]) => {
+    // Create a map to store categories and their posts
+    const categoryMap: {
+        [key: string]: {
+            categoryName: string;
+            posts: Post[];
+        };
+    } = {};
 
-    // Need to parse the JSON
+    data.forEach((item) => {
+        const { ID, Title, Body, Url, Category } = item;
+
+        // If the category doesn't exist in the map, create a new entry
+        if (!categoryMap[Category]) {
+            categoryMap[Category] = {
+                categoryName: Category,
+                posts: [],
+            };
+        }
+
+        // Push the post into the correct category's posts array
+        categoryMap[Category].posts.push({
+            ID: ID,
+            Title: Title,
+            Body: Body,
+            Url: Url,
+            Date: item.Date,  // Including the date field from ApiData
+        });
+    });
+
+    // Convert the map to an array
+    return {
+        categories: Object.values(categoryMap),
+    };
+};
+    const transformedData = transformData(
+        sample_api_data
+    );
+
+    console.log(transformedData)
 
     return (
         <div className="scrollable-sidebar">
             {/* Add content to the scrollable sidebar */}
-            {sample_data.categories.map(
+            {transformedData.categories.map(
                 (category, index) => (
                     <CategoryScrollItem
                         key={index}
@@ -93,7 +148,6 @@ const ScrollWindow = () => {
                     />
                 )
             )}
-
         </div>
     );
 };

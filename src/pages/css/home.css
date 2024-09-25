@@ -4,3 +4,12 @@
     height: 96vh;
     overflow: hidden ;
 }
+
+.scrollWindowSection{
+    width: 15%;
+}
+
+
+.postWindowSection{
+    flex-grow: 1;
+}
