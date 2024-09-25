@@ -1,0 +1,13 @@
+.scrollable-sidebar {
+    height: 100%;
+    width: 250px;
+    /* Set the width for the sidebar */
+    overflow-y: auto;
+    /* Make the sidebar scrollable */
+    background-color: #f4f4f4;
+    /* Background color for the sidebar */
+    padding: 10px;
+    /* Add padding for content */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Optional shadow */
+}

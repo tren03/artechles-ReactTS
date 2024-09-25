@@ -1,0 +1,25 @@
+.navbar {
+    margin: 0;
+    background-color: aqua;
+    height: 4vh;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* The container that holds the nav items */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    /* Space out the nav items evenly */
+    align-items: center;
+    /* Vertically center items */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* Individual nav items */
+.nav-item {
+    padding: 10px;
+}
