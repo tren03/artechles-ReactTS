@@ -31,6 +31,23 @@ const sample_api_data = [
         Date: '2024-09-17T07:38:55.041995Z',
         Category: 'Parsing',
     },
+    {
+        ID: 55,
+        Title: 'Pratt Parsers: Expression Parsing Made Easy',
+        Url: 'https://journal.stuffwithstuff.com/2011/03/19/pratt-parsers-expression-parsing-made-easy/',
+        Body: 'A much more hands on article talking about the actual implementation of a pratt parser for a dummy language.',
+        Date: '2024-09-17T14:10:43.40191Z',
+        Category: 'Parsing',
+    },
+    {
+        ID: 56,
+        Title: 'Simple but Powerful Pratt Parsing',
+        Url: 'https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html',
+        Body: 'Helped me a bit in understanding more about pratt parsers and recursive descent parsers for my go interpreter.',
+        Date: '2024-09-17T07:38:55.041995Z',
+        Category: 'Parsing',
+    },
+
 ];
 
 export default sample_api_data

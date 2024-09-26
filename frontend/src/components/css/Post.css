@@ -1,0 +1,42 @@
+.post-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 600px;
+  transition: box-shadow 0.3s ease; /* Add a hover effect for better UX */
+  text-decoration: none; /* Remove default link decoration */
+  color: inherit; /* Inherit color from parent */
+  display: block; /* Make the entire container clickable */
+}
+
+.post-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a hover effect */
+}
+
+.post-title {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.post-date {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.post-body {
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.post-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit the color from the container */
+  display: block; /* Ensure the entire container is a clickable block */
+}
+

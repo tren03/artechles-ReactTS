@@ -1,0 +1,29 @@
+I Connect my frontend to my backend, and backend gets connected to a docker image of postgresql.
+Thinking about implementing auth for multiple users, not sure
+
+docker run -p 5432:5432 -d \
+    --name my-postgres-db \
+    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_DB=stripe-example \
+    -v pgdata:/var/lib/postgresql/data \
+    postgres
+
+// for my instance 
+psql articles -h localhost -U postgres 
+password postgres
+
+-> command to create a docker image with volume for persistance, make sure to give it a name using --name 
+-> next time, just do docker run <name> to run it
+
+
+to create posts
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,   -- Auto-incrementing integer as the primary key
+    title VARCHAR(255) NOT NULL, -- Variable length string with max length 255
+    url TEXT,                -- URL stored as text (no length limit)
+    body TEXT,               -- Body stored as text (no length limit)
+    date TIMESTAMP           -- Date and time without time zone
+    category VARCHAR(255) NOT NULL, -- Variable length string with max length 255
+);
+
