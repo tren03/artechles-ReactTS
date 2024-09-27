@@ -1,0 +1,44 @@
+
+I Connect my frontend to my backend, and backend gets connected to a docker image of postgresql.
+Thinking about implementing auth for multiple users, not sure
+
+// to create 
+docker run -p 5432:5432 -d \
+    --name article-pdb\
+    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_DB=articles \
+    -v pgdata:/var/lib/postgresql/data \
+    postgres
+
+
+
+-> command to create a docker image with volume for persistance given above, make sure to give it a name using --name 
+-> next time, just do docker start <name> to run it
+
+// for my instance 
+psql articles -h localhost -U postgres 
+password postgres
+
+
+to create posts
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,   -- Auto-incrementing integer as the primary key
+    title VARCHAR(255) NOT NULL, -- Variable length string with max length 255
+    url TEXT,                -- URL stored as text (no length limit)
+    body TEXT,               -- Body stored as text (no length limit)
+    date TIMESTAMP           -- Date and time without time zone
+    category VARCHAR(255) NOT NULL, -- Variable length string with max length 255
+);
+
+
+docker run: Creates and starts a new container from an image.
+docker start: Starts an existing stopped container.
+docker build: Builds an image from a Dockerfile.
+docker stop: Gracefully stops a running container.
+docker kill: Immediately forces a container to stop.
+docker rm: Removes a stopped container.
+docker rmi: Removes a Docker image.
+docker exec: Runs a new process inside a running container.
+docker attach: Attaches to an already running process inside a container.
+

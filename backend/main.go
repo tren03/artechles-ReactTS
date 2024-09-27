@@ -3,12 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"time"
-    "github.com/tren03/artechles-ReactTS/backend/global"
-    
-    "github.com/tren03/artechles-ReactTS/backend/databaseOpr"
-    
-
+	"log"
 	_ "github.com/lib/pq"
 )
 
@@ -34,35 +29,15 @@ const (
 
 func main() {
 	fmt.Println("testing postgress con")
-
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
 
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		panic(err)
+		log.Fatal("Not connected to database")
 	}
 	defer db.Close()
-
 	fmt.Println("connected yes !")
-	p := global.Post{
-		ID:       54,
-		Title:    "Go By example",
-		Url:      "https://gobyexample.com/",
-		Body:     "A site that is a good primer for all of the main concepts covered in go language with code snippets for each.",
-		Date:     time.Now(),
-		Category: "Go Programming",
-	}
-    databaseopr.AddPost(db,p)	
 
-	sqlGet := `SELECT * from test;`
-	row := db.QueryRow(sqlGet)
-	var name string
-	err = row.Scan(&name)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(name)
 }
