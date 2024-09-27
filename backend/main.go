@@ -1,18 +1,14 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
 	"log"
-	_ "github.com/lib/pq"
-)
+	"net/http"
 
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "postgres"
-	dbname   = "articles"
+	"github.com/gorilla/mux"
+	_ "github.com/lib/pq"
+	"github.com/rs/cors"
+	"github.com/tren03/artechles-ReactTS/backend/databaseopr"
+	"github.com/tren03/artechles-ReactTS/backend/routes"
 )
 
 // the format i should get from frontend ->
@@ -28,16 +24,18 @@ const (
 */
 
 func main() {
-	fmt.Println("testing postgress con")
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
+    db,err := databaseopr.Dbconnect()
+    if err!=nil{
+        log.Println("Database connection failed")
+    }
+    defer db.Close()
 
-	db, err := sql.Open("postgres", psqlInfo)
-	if err != nil {
-		log.Fatal("Not connected to database")
-	}
-	defer db.Close()
-	fmt.Println("connected yes !")
+	r := mux.NewRouter()
 
+	r.HandleFunc("/getallposts", routes.HandleGetAllPosts(db))
+	r.HandleFunc("/", routes.HandleRoot)
+
+	handler := cors.Default().Handler(r)
+	log.Println("starting server at port 3000")
+	log.Fatal(http.ListenAndServe(":3000", handler))
 }
